@@ -1,3 +1,4 @@
+#The user inputs a youtube channel name, the program outputs the number of views the channels most popular video has
 from urllib import request
 import bs4 as bs
 
