@@ -5,14 +5,17 @@ import bs4 as bs
 while(True):
     user = input("Youtube channel name: ")
     url = "https://www.youtube.com/user/"+ user +"/videos?sort=p&view=0&flow=grid"
-    html = request.urlopen(url).read()
-    soup = bs.BeautifulSoup(html,'lxml')
-    for p in soup.find_all('ul','yt-lockup-meta-info'):
-        views = p.text
-        break
-    i = 1
-    s = "k"
-    while s[len(s)-1] != " ":
-        s = views[0:i]
-        i += 1
-    print(s)
+    try:
+        html = request.urlopen(url).read()
+        soup = bs.BeautifulSoup(html,'lxml')
+        for p in soup.find_all('ul','yt-lockup-meta-info'):
+            views = p.text
+            break
+        i = 1
+        s = "k"
+        while s[len(s)-1] != " ":
+            s = views[0:i]
+            i += 1
+        print(s)
+    except:
+        print("Channel doesn't exist or has no videos")
